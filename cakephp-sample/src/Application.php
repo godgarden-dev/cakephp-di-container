@@ -16,6 +16,9 @@ declare(strict_types=1);
  */
 namespace App;
 
+use App\Service\SlackService;
+use App\Service\WebhookServiceInterface;
+
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Core\Exception\MissingPluginException;
@@ -116,6 +119,7 @@ class Application extends BaseApplication
      */
     public function services(ContainerInterface $container): void
     {
+        $container->add(WebhookServiceInterface::class, SlackService::class);
     }
 
     /**
